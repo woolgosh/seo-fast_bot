@@ -16,7 +16,7 @@ options = Options()
 options.set_preference('media.volume_scale', '0.0')
 # options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
 options.add_argument("--headless")
-driver_service = Service(executable_path='/home/seo-fast/geckodriver')
+driver_service = Service(executable_path='../geckodriver')
 driver = webdriver.Firefox(service=driver_service, options=options)
 
 def capcha_pictures(): #решаем купчу при входе на сайт
