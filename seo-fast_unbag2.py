@@ -15,7 +15,7 @@ password = 'c8fbbc86ab'
 options = Options()
 options.set_preference('media.volume_scale', '0.0')
 options.binary_location = 'C:\\Program Files\\Mozilla Firefox\\firefox.exe'
-options.add_argument("--headless")
+# options.add_argument("--headless")
 driver_service = Service(executable_path='geckodriver.exe')
 driver = webdriver.Firefox(service=driver_service, options=options)
 
@@ -80,8 +80,9 @@ def play_youtube(): #функция запускае воспроизведен�
 def all_links():
     driver.refresh()
     time.sleep(5)
-    capcha_chisla()
-    driver.find_element(By.CSS_SELECTOR, 'a[href="/work_youtube?youtube_expensive"]').click()
+    # capcha_chisla()
+    input('Вылезла капча: ')
+    driver.find_element(By.CSS_SELECTOR, 'a[href="/work_youtube?expensive_youtube"]').click()
     time.sleep(10)
     all_youtube = driver.find_elements(By.CSS_SELECTOR, 'tr td td div a.surf_ckick')
     print(len(all_youtube))
@@ -133,13 +134,13 @@ def all_links():
         driver.get_screenshot_as_file('seo-fast/before_sf_button.png')
         if len(driver.find_elements(By.CLASS_NAME, 'sf_button')) > 0:
             driver.find_element(By.CLASS_NAME, 'sf_button').click()
-            print(f'{datetime.now().strftime("%H:%M:%S")} Получаем деньги за просмотр...')
+            print(f'{datetime.now().strftime("%H:%M:%S")} Получаем деньги за просмотр(1)...')
         else:
-            time.sleep(7)
+            time.sleep(10)
 
             if len(driver.find_elements(By.CLASS_NAME, 'sf_button')) > 0:
                 driver.find_element(By.CLASS_NAME, 'sf_button').click()
-                print(f'{datetime.now().strftime("%H:%M:%S")} Получаем деньги за просмотр...')
+                print(f'{datetime.now().strftime("%H:%M:%S")} Получаем деньги за просмотр(2)...')
             else:
                 time.sleep(1)
                 print(f'{datetime.now().strftime("%H:%M:%S")} Не вижу кнопки Продолжить, переходим к следующей ссылке')
@@ -157,7 +158,8 @@ def to_youtube_links():
     time.sleep(8)
     driver.find_element(By.CLASS_NAME, 'fa-youtube').click()
     time.sleep(7)
-    capcha_chisla()
+    # capcha_chisla()
+    input('Вылезла капча: ')
     time.sleep(3)
     try:
         driver.find_element(By.CSS_SELECTOR, 'div.popup2 a').click()  # пробуем закрыть модальное окно
